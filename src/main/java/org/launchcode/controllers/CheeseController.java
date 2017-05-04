@@ -50,16 +50,21 @@ public class CheeseController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@ModelAttribute @Valid Cheese newCheese,
-                                       Errors errors, @RequestParam int categoryId,
+                                       Errors errors, @RequestParam int categoryID,
                                        Model model) {
 
         if (errors.hasErrors()) {
+            System.out.println("CategoryId_error : " + categoryID);
             model.addAttribute("title", "Add Cheese");
             //model.addAttribute("categories", categoryDao.findAll());
             return "cheese/add";
         }
 
-        Category cat = categoryDao.findOne(categoryId);
+
+        System.out.println("CategoryId : " + categoryID);
+
+
+        Category cat = categoryDao.findOne(categoryID);
        // Category cat = categoryDao.findOne(1);
         newCheese.setCategory(cat);
         cheeseDao.save(newCheese);
