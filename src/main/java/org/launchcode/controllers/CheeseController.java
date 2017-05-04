@@ -42,7 +42,6 @@ public class CheeseController {
     public String displayAddCheeseForm(Model model) {
         model.addAttribute("title", "Add Cheese");
         model.addAttribute(new Cheese());
-       // model.addAttribute("categories", cheeseDao.findAll());
         model.addAttribute("categories", categoryDao.findAll());
 
         return "cheese/add";
@@ -56,16 +55,11 @@ public class CheeseController {
         if (errors.hasErrors()) {
             System.out.println("CategoryId_error : " + categoryID);
             model.addAttribute("title", "Add Cheese");
-            //model.addAttribute("categories", categoryDao.findAll());
             return "cheese/add";
         }
 
 
-        System.out.println("CategoryId : " + categoryID);
-
-
         Category cat = categoryDao.findOne(categoryID);
-       // Category cat = categoryDao.findOne(1);
         newCheese.setCategory(cat);
         cheeseDao.save(newCheese);
         return "redirect:/cheese";
