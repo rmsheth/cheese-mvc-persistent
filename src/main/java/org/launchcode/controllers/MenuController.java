@@ -63,7 +63,7 @@ public class MenuController {
         //model.addAttribute("cheeses", menu.getCheeses());
         //model.addAttribute("menuId", menu.getId());
         model.addAttribute("menu", menu);
-        model.addAttribute("title", menu.getName());
+        //model.addAttribute("title", menu.getName());
         return "menu/view";
     }
 
@@ -83,6 +83,7 @@ public class MenuController {
             model.addAttribute("form", form);
             return "menu/add-item";
         }
+
         Cheese cheese = cheeseDao.findOne(form.getCheeseId());
         Menu menu = menuDao.findOne(form.getMenuId());
         menu.addItem(cheese);
@@ -92,7 +93,7 @@ public class MenuController {
         //return "redirect:/menu/view/" +   menu.getId();
     }
 
-    public void setMenuDao(MenuDao menuDao) {
-        this.menuDao = menuDao;
-    }
+    //public void setMenuDao(MenuDao menuDao) {
+    //    this.menuDao = menuDao;
+    //}
 }

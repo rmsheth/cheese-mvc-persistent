@@ -24,6 +24,7 @@
                     th:text="${category.name}"
                     th:value="${category.id}"></option>
         </select>
+        <span th:errors="*{category}" class="error"></span>
     </div>
 
 

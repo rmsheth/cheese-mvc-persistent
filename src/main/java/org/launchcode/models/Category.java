@@ -13,13 +13,14 @@ import java.util.List;
 @Entity
 public class Category {
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Id
     @GeneratedValue
     private int id;
+
+    @NotNull
+    public Category(){}
+    public Category(String name){}
 
     @OneToMany
     @JoinColumn(name = "category_id")
@@ -28,6 +29,8 @@ public class Category {
     @NotNull
     @Size(min=3, max=15)
     private String name;
+
+    //public int setId(int id) { this.id = id; }
 
     public int getId() {
         return id;

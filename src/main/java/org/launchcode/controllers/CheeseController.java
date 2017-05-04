@@ -55,14 +55,15 @@ public class CheeseController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
-            model.addAttribute("categories", categoryDao.findAll());
+            //model.addAttribute("categories", categoryDao.findAll());
             return "cheese/add";
         }
 
         Category cat = categoryDao.findOne(categoryId);
+       // Category cat = categoryDao.findOne(1);
         newCheese.setCategory(cat);
         cheeseDao.save(newCheese);
-        return "redirect:";
+        return "redirect:/cheese";
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.GET)
